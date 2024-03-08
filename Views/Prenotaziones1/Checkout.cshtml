@@ -1,0 +1,22 @@
+﻿@model AlbergoNigro.Models.CheckoutViewModel
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="text-center">
+    <h1 class="text-success">Dettaglio della prenotazione</h1>
+
+    <p class="fw-bold">Numero di stanza: @Model.Prenotazione.Camera.ID @Model.Prenotazione.Camera.Descrizione</p>
+    <p class="fw-bold">Periodo: @Model.Prenotazione.DataInizioSoggiorno - @Model.Prenotazione.DataFineSoggiorno</p>
+
+    <h2 class="mt-3  text-success">Servizi aggiuntivi</h2>
+   
+        @foreach (var servizio in Model.Servizi)
+        {
+        <span class="fw-bold"> @servizio.Descrizione: @servizio.Prezzo €</span>
+        }
+ 
+    <h2 class="mt-3 text-success">Tariffa applicata: @Model.Prenotazione.Prezzo</h2>
+    <p class="fw-bold">Importo da saldare: @(Model.Prenotazione.Prezzo - Model.Prenotazione.Acconto + Model.Servizi.Sum(s => s.Prezzo))</p>
+</div>

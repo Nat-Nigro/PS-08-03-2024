@@ -1,0 +1,23 @@
+﻿@model int
+
+@{
+    ViewData["Title"] = "TotalPensioneCompleta";
+}
+
+
+
+<div>
+    <h4>Prenotazioni con pensione completa</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Totale prenotazioni per pensione completa
+        </dt>
+        <dd class="col-sm-10">
+            @Model
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<AlbergoNigro.Models.Prenotazione>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Prenotazioni</h1>
+
+
+<form asp-controller="Prenotaziones1" asp-action="SearchByCodiceFiscale" method="get">
+    <div class="form-group d-flex">
+        <input type="text" class="form-control" id="codiceFiscale" name="codiceFiscale" placeholder="Cerca per codice fiscale">
+        <button type="submit" class="btn btn-primary ms-2">Cerca</button>
+    </div>
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataPrenotazione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInizioSoggiorno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFineSoggiorno)
+            </th>
+          @*   <th>
+                @Html.DisplayNameFor(model => model.Anno)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Acconto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezzo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Camera)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pensione)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataPrenotazione)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataInizioSoggiorno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataFineSoggiorno)
+                </td>
+             @*    <td>
+                    @Html.DisplayFor(modelItem => item.Anno)
+                </td> *@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acconto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezzo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Camera.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pensione.Tipologia)
+                </td>
+                <td>
+                    @*   <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> | *@
+                    @*    <a asp-action="Details" asp-route-id="@item.ID">Details</a> | *@
+                    <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger ">Delete</a>
+
+                    <a asp-action="Checkout" asp-route-id="@item.ID" class="btn btn-info ">Checkout</a>
+
+                    <a asp-action="Create" asp-controller="Servizis1" class="btn btn-warning my-2">Aggiungi Servizio</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form asp-controller="Prenotaziones1" asp-action="TotalPensioneCompleta" method="get">
+    <input class="btn bg-primary text-white" type="submit" value="Mostra prenotazioni per pensione completa" />
+</form>
+<p>
+    <a asp-action="Create" class="btn btn-success my-2">Crea prenotazione</a>
+</p>

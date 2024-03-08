@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AlbergoNigro.Models.Camere>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Le camere</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Aggiugni camera</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descrizione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doppia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Disponibilita)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descrizione)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doppia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponibilita)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
